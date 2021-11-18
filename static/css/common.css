@@ -1,0 +1,341 @@
+/*
+ *author:
+ *time: 2018-06-20
+ *北京汉博信息技术有限公司
+*/
+body {
+    /*font-family: "microsoft yahei";*/
+    font-size: 0.14rem ;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;
+    color: #4d4d4d;
+    line-height: 0.24rem;
+}
+*{
+    font-family: \5FAE\8F6F\96C5\9ED1;
+}
+body, html{
+    height: 100%;
+}
+/*a, abbr, acronym, address, applet, article, aside, audio,*/
+/*b, blockquote, big, body,*/
+/*center, canvas, caption, cite, code, command,*/
+/*datalist, dd, del, details, dfn, dl, div, dt,*/
+/*em, embed,*/
+/*fieldset, figcaption, figure, font, footer, form,*/
+/*h1, h2, h3, h4, h5, h6, header, hgroup, html,*/
+/*i, iframe, img, ins,*/
+/*kbd,*/
+/*keygen,*/
+/*label, legend, li,*/
+/*meter,*/
+/*nav,*/
+/*object, ol, output,*/
+/*p, pre, progress,*/
+/*q,*/
+/*s, samp, section, small, span, source, strike, strong, sub, sup,*/
+/*table, tbody, tfoot, thead, th, tr, tdvideo, tt,*/
+/*u, ul {*/
+/*margin: 0;*/
+/*padding: 0;*/
+/*box-sizing: border-box;*/
+/*}*/
+
+.rich-text{
+    font-size: 14px;
+    word-wrap:break-word;
+    line-height: initial;
+}
+
+
+input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+/*去掉ie密码框后面的眼睛图标*/
+input::-ms-clear,input::-ms-reveal { display: none; }
+
+*{
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+i{
+    font-style:normal;
+}
+.clear{
+    overflow: hidden;
+    zoom:1;
+}
+.float_l{
+    float: left;
+}
+.float_r{
+    float: right;
+}
+.clearfix:after, .clearfix:before{
+    content: "";
+    display: table;
+    width: 0;
+    height: 0;
+    clear: both;
+}
+[v-cloak]{
+    display: none;
+}
+.clearfix {
+    zoom: 1;
+}
+
+input{
+    outline: none;
+}
+
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #aaa;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #aaa;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #aaa;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #aaa;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+/*定义滚动条*/
+::-webkit-scrollbar {
+    width: 0.14rem;
+    height: 0.14rem;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    border: 0.05rem solid transparent;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: 0.01rem 0.01rem 0.05rem rgba(0,0,0,.2) inset;
+}
+
+::-webkit-scrollbar-thumb {
+    min-height: 0.2rem;
+    background-clip: content-box;
+    box-shadow: 0 0 0 0.05rem rgba(0,0,0,.2) inset;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+
+/*遮罩*/
+.shade{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    -webkit-display:flex;
+    display:flex;
+    -webkit-align-items:center;
+    align-items:center;
+    -webkit-justify-content:center;
+    justify-content:center;
+}
+.shade>.shade_box{
+    background: #fff;
+}
+.shade>.shade_box>.shade_title{
+    font-size: 16px;
+    background: #2b98f0;
+    line-height: 30px;
+    height: 30px;
+    width: auto;
+    text-align: center;
+    position: relative;
+    color: #fff;
+}
+.shade>.shade_box>.shade_title>i{
+    width:30px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+    transition: transform 0.5s ease 0s;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+}
+.shade>.shade_box>.shade_title>i:hover{
+    transform: rotate(360deg);
+}
+.shade>.shade_box>.shade_btncon{
+    display: flex;
+    justify-content: center;
+}
+.shade>.shade_box>.shade_btncon>button{
+    font-size: 14px;
+    width: 50%;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    transition: background .3s linear;
+}
+.shade>.shade_box>.shade_btncon>button:hover{
+    background: #b4b4b4;
+}
+.shade>.shade_box>.shade_btncon>button:last-child{
+    margin-right:0;
+}
+.shade>.shade_box>.shade_btncon>button.shade_affirm{
+    background: #0085fe;
+    color: #fff;
+    border: 1px #0085fe solid;
+}
+.shade>.shade_box>.shade_btncon>button.shade_affirm:hover{
+    background: #007bea;
+}
+button.u-com, span.u-com{
+    display: inline-block;
+    background: #bbb;
+    font-size: 0.14rem;
+    width: auto;
+    padding: 0 0.1rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    border: 1px #bbb solid;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0.05rem;
+    transition: background .3s linear;
+}
+button.u-com:disabled, span.u-com.disabled{
+    border-color: #E9E9EB!important;
+    background: #F4F4F5!important;
+    color: #BCBEC2!important;
+    cursor: not-allowed;
+}
+span.u-com{
+    line-height: 0.4rem;
+}
+button.u-com:hover, span.u-com:hover{
+    background: #b4b4b4;
+}
+
+button.u-com.affirm, span.u-com.affirm{
+    background: #0085fe;
+    color: #fff;
+    border: 1px #0085fe solid;
+}
+button.u-com.shade_affirm:hover, span.u-com.shade_affirm:hover{
+    background: #007bea;
+}
+/*可编辑div 的placehoder*/
+div[contenteditable]:empty:before{
+    content: attr(placeholder);
+    color:#bbb;
+}
+div[contenteditable]:focus:before{
+    content:none;
+}
+/*字体红色*/
+.red{
+    color: #f00!important;
+}
+/*居中*/
+.z-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+input[type="text"].u-com, input[type="password"].u-com{
+    border-radius: 0.05rem;
+    border: 1px solid #aaa;
+    font-size: inherit;
+    -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    padding: 0 0.05rem;
+    box-sizing: border-box;
+}
+input[type="text"].u-com:disabled, input[type="password"].u-com:disabled{
+    color: #aaa;
+}
+
+
+input[type="text"].u-com:focus ,select.u-com:focus, input[type="number"].u-com:focus, input[type="password"].u-com:focus, textarea.u-com:focus{
+    border-color: #0080FF;
+    outline: 0;
+}
+
+
+/*1 \E6F9 */
+/*2 \E6F7*/
+/*3 \E6F3*/
+
+@keyframes yuyinanimate
+{
+    0% {content: '\E6F9';}
+    33% {content: '\E6F7';}
+    66% {content: '\E6F3';}
+}
+
+.yuyin:before{
+    animation: yuyinanimate 1.5s infinite;
+    content: '\E6F9';
+}
+
+/*自定义title 样式*/
+.title-box{
+    position: absolute;
+    border-radius: 0.05rem;
+    top: -1000px;
+    left: -1000px;
+    background: #fff;
+    border:1px solid #333;
+    color: #333;
+    padding: 5px 10px;
+    font-size: 0.12rem;
+    display: none;
+}
+.title-box>i{
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    z-index: 10;
+    background: #fff;
+    transform: rotate(45deg);
+    bottom: -4px;
+    left: 10px;
+}

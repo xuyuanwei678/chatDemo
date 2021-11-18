@@ -1,0 +1,56 @@
+/*vue 样式重置*/
+/*switch样式(行内)*/
+body .weui-switch, .weui-switch-cp__box{
+    width:calc(0.6rem + 2px);
+    height:calc(0.34rem + 2px);
+    background: calc(0.17rem + 2px);
+}
+body .weui-switch:before, .weui-switch-cp__box:before{
+    width:0.6rem;
+    height:0.34rem;
+    background: 0.17rem;
+}
+body .weui-switch:after, .weui-switch-cp__box:after{
+    width:0.34rem;
+    height:0.34rem;
+    border-radius: 0.17rem;
+}
+body .weui-switch:checked:after, body .weui-switch-cp__input:checked ~ .weui-switch-cp__box:after{
+    -webkit-transform: translateX(0.26rem);
+    transform: translateX(0.26rem);
+
+}
+body .weui-switch:checked, body .weui-switch-cp__input:checked ~ .weui-switch-cp__box{
+    border-color: #1194F6;
+    background-color: #1194F6;
+}
+/*vux tab 导航样式*/
+body .vux-tab{
+    height:1rem;
+}
+body .vux-tab .vux-tab-item{
+    font-size: 0.2rem;
+    line-height:1rem;
+}
+
+/*vux confirm 样式*/
+body .vux-confirm .weui-dialog__btn_primary {
+    color: #2196F3;
+}
+/*vue 下拉文字提示 行高*/
+body .xs-plugin-pullup-container{
+    line-height: 35px;
+}
+/*vux 上拉 */
+body .xs-container{
+    min-height:100%;
+}
+/*由于视频会遮挡 所以向下移动*/
+/*弹框*/
+body .weui-toast{
+    top: 5rem!important;
+}
+body .weui-toast__content{
+    font-size:0.22rem;
+}
+
