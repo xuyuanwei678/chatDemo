@@ -80,7 +80,7 @@ Object.keys(filters).forEach(key =>{
 //全局mixin
 import shoproShare from '@/common/mixins/shopro-share'
 Vue.mixin(shoproShare);
-
+import store from '@/common/store/index.js'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = http;
@@ -93,6 +93,7 @@ Vue.prototype.$mHelper = $mHelper;
 App.mpType = 'app'
 
 const app = new Vue({
-    ...App
+    ...App,
+	store
 })
 app.$mount()

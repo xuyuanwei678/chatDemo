@@ -85,6 +85,11 @@
 	
 	import chatBox from "./common/chatBox.vue"
 	import emotions from '@/static/json/emoji.js'
+	//websocket
+	import websocket from '@/common/websocket.js'
+	//websocket初始化，根据业务需求选择链接时机
+	websocket.Init();
+	import {mapState} from 'vuex'
 	export default {
 		components:{
 			chatBox
@@ -153,8 +158,9 @@
 		},
 		onLoad() {
 			this.title=process.env.NODE_ENV;
-			
+			console.log('this.$store.state.vuex_message;',this.$store.state.vuex_message)
 		},
+		
 		methods: {
 			jump(){
 				uni.navigateTo({
@@ -383,6 +389,32 @@
 					}
 					this.willStop = false;
 				},
+				// 选择表情
+				chooseEmoji() {
+					this.hideMore = true;
+					if (this.hideEmoji) {
+						this.hideEmoji = false;
+						this.openDrawer();
+					} else {
+						this.hideDrawer();
+					}
+				},
+				//添加表情,这个功能还在做，waiting
+				addEmoji(em) {
+					this.textMsg += em.text;
+				},
+				//发送消息
+				sendMessageText(){
+					let test = {
+						"action":"group_chat",						//聊天类型，后端定义
+						"content":{									//聊天内容
+							"type":"words",
+							"content":this.content,
+						}
+					}
+					websocket.Send(test)
+					this.content = '';
+				}
 		}
 	}
 </script>
@@ -390,7 +422,7 @@
 <style lang="scss">
 	@import "@/common/css/chat.scss";
 	.content {
-		background-color: #30324F;
+		background-color: #F1F1F1;
 		padding-bottom: 150rpx;
 		
 	}

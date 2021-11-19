@@ -36,6 +36,7 @@ const store = new Vuex.Store({
 		// 如果vuex_version无需保存到本地永久存储，无需lifeData.vuex_version方式
 		vuex_version: '1.0.1',
 		vuex_demo: '绛紫',
+		
 		// 自定义tabbar数据
 		vuex_tabbar: [{
 				iconPath: "/static/uview/example/component.png",
@@ -56,7 +57,8 @@ const store = new Vuex.Store({
 				text: '模板',
 				pagePath: '/pages/example/template'
 			}
-		]
+		],
+		vuex_message:{1:5},
 	},
 	mutations: {
 		$uStore(state, payload) {
@@ -78,7 +80,10 @@ const store = new Vuex.Store({
 			}
 			// 保存变量到本地，见顶部函数定义
 			saveLifeData(saveKey, state[saveKey])
-		}
+		},
+		setMessage(state,vuex_message){
+			state.vuex_message = vuex_message
+		},
 	}
 })
 

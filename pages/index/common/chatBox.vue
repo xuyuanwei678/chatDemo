@@ -17,7 +17,7 @@
 						
 						
 						<!--头像-->
-						<img src="/static/img/setting/avatar.png" class="pic">
+						<img src="/static/img/setting/avatar.jpg" class="pic">
 						<!--头像end-->
                         
 						<div v-if="item.deleted==0" style="display: flex;flex-direction: row;">
@@ -25,15 +25,7 @@
 							
 							<!--文字-->
 							
-							<div 
-								v-if="item.contentType=='word'" 
-								class="content2"
-								@touchstart.stop="touchstart_callback(item.id,index)" 
-								@touchend.stop="touchend_callback"
-								@touchmove.stop.prevent="touchstop_callback"
-							>
-								{{item.content}}
-							</div>
+							<div v-if="item.contentType=='word'||item.content.type=='words'" class="content2">{{item.content.content||item.content}}</div>
 							<!--文字end-->
 							
 							<!-- 语言消息 -->
@@ -63,16 +55,16 @@
 					<!--别人发出的消息-->
 					<div v-else class="left">
 						
-						<img src="/static/img/setting/avatar.png" mode="aspectFill" class="pic">
+						<img src="/static/img/setting/avatar.jpg" mode="aspectFill" class="pic">
 						
 						<div v-if="item.deleted==1" class="callbacl">
-							客服撤回了一条消息
+							xyw撤回了一条消息
 						</div>
 						
 						<div v-else>
 							
 							<!--文字-->
-							<div v-html="item.content" v-if="item.contentType=='word'" class="content2"></div>
+							<div v-if="item.contentType=='word'||item.content.type=='words'" class="content2">{{item.content.content||item.content}}</div>
 							<!--文字end-->
 							
 							<!-- 语言消息 -->
@@ -109,8 +101,17 @@ export default {
     }
   },
   validations: { },
-  watch: { },
-  computed: { },
+  computed:{
+	get_new_message() {
+		return this.$store.state.vuex_message;
+	},
+},
+watch:{
+	get_new_message:function(newV,oldV){
+		this.talkList.unshift(newV)
+		console.error(this.talkList)
+	},
+},
   filters: { },
   methods: {
     test(){
@@ -120,7 +121,7 @@ export default {
     "senderId": 125,
     "senderName": "白云阁",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "55555",
+    "content": "从别后，忆相逢，几回魂梦与君同",
     "contentType": "word",
     "receiverId": 104,
     "receiverName": "李老师",
@@ -135,7 +136,7 @@ export default {
     "senderId": 125,
     "senderName": "白云阁",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "222",
+    "content": "此去经年，应是良辰好景虚设",
     "contentType": "word",
     "receiverId": 104,
     "receiverName": "李老师",
@@ -150,7 +151,7 @@ export default {
     "senderId": 125,
     "senderName": "白云阁",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "111",
+    "content": "多情自古伤离别，更那堪、冷落清秋节",
     "contentType": "word",
     "receiverId": 104,
     "receiverName": "李老师",
@@ -165,7 +166,7 @@ export default {
     "senderId": 104,
     "senderName": "18923104569",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "哈哈哈",
+    "content": "瘦影自怜秋水照，卿须怜我我怜卿",
     "contentType": "word",
     "receiverId": 130,
     "receiverName": "广告",
@@ -179,7 +180,7 @@ export default {
     "senderId": 104,
     "senderName": "18923104569",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "xxxxxx",
+    "content": "似此星辰非昨夜，为谁风露立中宵",
     "contentType": "word",
     "receiverId": 130,
     "receiverName": "广告",
@@ -193,12 +194,12 @@ export default {
     "senderId": 104,
     "senderName": "刘老师",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "111",
+    "content": "山有木兮木有枝,心悦君兮君不知",
     "contentType": "word",
     "receiverId": 125,
     "receiverName": "广告",
     "receiverAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "deleted": 0,
+    "deleted": 1,
     "createTime": "2021-10-27 09:38:28",
     "chatRoom": "8a33feecf955432e98670a5fedc60226"
   },
@@ -207,7 +208,7 @@ export default {
     "senderId": 104,
     "senderName": "刘老师",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "111",
+    "content": "落红不是无情物，化作春泥更护花",
     "contentType": "word",
     "receiverId": 125,
     "receiverName": "广告",
@@ -221,7 +222,7 @@ export default {
     "senderId": 104,
     "senderName": "刘老师",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "1111",
+    "content": "咬定青山不放松，立根原在破岩中",
     "contentType": "word",
     "receiverId": 125,
     "receiverName": "广告",
@@ -235,7 +236,7 @@ export default {
     "senderId": 125,
     "senderName": "广告",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "😅",
+    "content": "我渴望有价值的对手",
     "contentType": "word",
     "receiverId": 104,
     "receiverAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
@@ -248,7 +249,7 @@ export default {
     "senderId": 125,
     "senderName": "广告",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "😇",
+    "content": "疾风知劲草，板荡识诚臣。",
     "contentType": "word",
     "receiverId": 104,
     "receiverAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
@@ -261,7 +262,7 @@ export default {
     "senderId": 104,
     "senderName": "刘老师",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "&lt;span class=\"chat-emoji emoji_b emojib_10\" data-name=\"奸笑\"&gt;&lt;/span&gt;",
+    "content": "竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。",
     "contentType": "word",
     "receiverId": 125,
     "receiverName": "广告",
@@ -275,7 +276,7 @@ export default {
     "senderId": 125,
     "senderName": "广告",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "😘😘😘",
+    "content": "西北望，射天狼",
     "contentType": "word",
     "receiverId": 104,
     "receiverAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
@@ -288,7 +289,7 @@ export default {
     "senderId": 125,
     "senderName": "广告",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "64576",
+    "content": "我于杀戮之中盛放，亦如黎明中的花朵",
     "contentType": "word",
     "receiverId": 104,
     "receiverAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
@@ -301,7 +302,7 @@ export default {
     "senderId": 125,
     "senderName": "广告",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "😇",
+    "content": "不论刮风还是下雨，太阳照常升起",
     "contentType": "word",
     "receiverId": 104,
     "receiverAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
@@ -314,7 +315,7 @@ export default {
     "senderId": 104,
     "senderName": "刘老师",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "🙆‍♂️",
+    "content": "时间，不在于你拥有多少，而在于你怎样使用",
     "contentType": "word",
     "receiverId": 125,
     "receiverName": "广告",
@@ -328,7 +329,7 @@ export default {
     "senderId": 104,
     "senderName": "刘老师",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "😀",
+    "content": "你好啊，朋友",
     "contentType": "word",
     "receiverId": 125,
     "receiverName": "广告",
@@ -342,7 +343,7 @@ export default {
     "senderId": 125,
     "senderName": "广告",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "🤯",
+    "content": "嘻嘻嘻，哈哈哈",
     "contentType": "word",
     "receiverId": 104,
     "receiverAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
@@ -351,25 +352,11 @@ export default {
     "chatRoom": "8a33feecf955432e98670a5fedc60226"
   },
   {
-    "id": "617766e0ff924767c640c623",
-    "senderId": 104,
-    "senderName": "刘老师",
-    "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "<img data-src=\"38\" data-type=\"face\" src=\"data:image/gif;base64,R0lGODlhGQAZAOYAAAAAAP///2oA0mwA0WsA0WcA1GgA1GYA02kA02UA1WUB1mcD1WgK2IQ332EA13wr3oxF4pRU5Z1j56Jr6bSI7b2X782w8+bX+V0E2b+b8NjC9vTu/GAZ3fn2/lYP3FMc3mAw4E4g31lW6GBc6T8+501u7i1j9hiL/Qip/yS1/xO5/xvA/wC+/wDI/wDE/wrI/wDO/wDV/wHS/w3T/wDY/wXa/wja/wDc/wDQ0wnCrwbImA2/iQ/AdwjHc1XXmQrCZwrCVQDFRxbCURPAQArCMQHDAAHAAAXDAAPDAAPAAAzCAhDDAxnEAS3GADnHAE3NAKHgcGfJAHzNAJ3OBbbVAt3gANbbBfDfAOfZCf/kAP/qNv7hAPveBvfcCP/dAO3WWP/UAP/LAP+/AP+qAP+WAP+GAP92AP9wAP9sAP9pAP9kAP9cAP9UAP9MAP9DAP+XdP83AP87AP8yAP8nAP/i3f8eAP9UPP/Hvv/m4v/w7v8ZAP8qEf86JP9VQ/+kmf///yH5BAEAAH8ALAAAAAAZABkAAAf/gH+Cg4SFhoeIiYqLjI2OhRsXFx2PgxUPCQaaBgoQFo0WDgIJICIjIyIcBgIMGooTBQolKzM1NDQ2MyklCQUTiBQIHyo3LTk/QkI8OTA3Kh8CEoYXBR4tMDxKRUtMTNpLOzAyIQgVhQ8GKDJDSE5UWFxdVlNNR0QwLhgJG4MaCCQ3fhSR4mVLGDFiwGTxIqXIEBonBkQYFCEdjiNRsogpgyYNmjNlwmRpqCNGiAL8/iwIEQMIky1i1KhpEyeOmzVpxGRxokTGCQEU/lwQYIKGEYJm1MzRs2ePnjpszoChgkRHvgd/MhA4cdHKGDVy9tARlMcOVDJZmhChQcJAhwkHcFDoeFmGjR48hfjIkSolSQwTAjRAcMDihxMvZtz0MXSnzhoxVIzg+EmhAYYWQZ6AOQPnzSE9bcZUUaIDRYIJD6wReRIGjRw/h/i4IXPlSA8WDiA08PDCx5cvb96MNeTnzRctUHy0wNCgkvPn0KMrCgQAOw==\">",
-    "contentType": "word",
-    "receiverId": 125,
-    "receiverName": "广告",
-    "receiverAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "deleted": 0,
-    "createTime": "2021-10-26 10:24:32",
-    "chatRoom": "8a33feecf955432e98670a5fedc60226"
-  },
-  {
     "id": "617766a8ff924767c640c622",
     "senderId": 104,
     "senderName": "刘老师",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
-    "content": "55555",
+    "content": "回眸一笑百媚生",
     "contentType": "word",
     "receiverId": 125,
     "receiverName": "广告",
@@ -383,7 +370,7 @@ export default {
     "senderId": 125,
     "senderName": "广告",
     "senderAvatar": "https://www.heqijiajiao.com:4436/happok/2021/10/17/28c317e3ca16499898375114021f67ac.jpeg",
-    "content": "😁我是新的",
+    "content": "云想衣裳花想容，春风拂槛露华浓。",
     "contentType": "word",
     "receiverId": 104,
     "receiverAvatar": "https://www.heqijiajiao.com:4436/happok/2021/11/12/f47d4c368dba47caa8a9920db48a3c2b.jpg",
@@ -423,7 +410,8 @@ export default {
         font-size: 20rpx;
         font-family: Source Han Sans CN;
         font-weight: 400;
-        color: #BEC0E0;
+        color: #b5b5b5;
+		margin-top: 20rpx;
     }
     .right{
         width: 100%;
@@ -431,26 +419,29 @@ export default {
         align-content:flex-start;
         align-items: flex-start;
         flex-direction: row-reverse;
-        height: 100rpx;
+        min-height: 100rpx;
         position:relative; 
         margin-top: 20rpx;
         .pic{
             width: 100rpx;
             height: 100rpx;
             border-radius: 50%;
+			z-index: 10;
         }
         .content2{
-			background: #22233B;
-			height: 100rpx;
+			background: #068EFD;
+			min-height: 100rpx;
 			line-height: 100rpx;
 			border-radius: 4px;
 			font-size: 24rpx;
             padding: 0 40rpx;
             font-family: Source Han Sans CN;
             font-weight: 400;
-            color: #BEC0E0;
+            color: #FFFFFF;
             margin-right: 26rpx;
             position:relative; 
+			display: flex;
+			align-items: center;
             &::after{
                 content: '';
                 display: block;
@@ -461,7 +452,7 @@ export default {
                 height:0;
                 font-size:0;
                 border:solid 8px;
-                border-color:#30324F #30324F #30324F #22233B;
+                border-color:#F1F1F1 #F1F1F1 #F1F1F1 #068EFD;
             }  
 		}
         // .arrow {
@@ -486,17 +477,19 @@ export default {
             width: 100rpx;
             height: 100rpx;
             border-radius: 50%;
+			z-index: 10;
         }
         .content2{
-			background: #22233B;
-			height: 100rpx;
-			line-height: 100rpx;
+			background: #068EFD;
+			min-height: 100rpx;
+			display: flex;
+			align-items: center;
 			border-radius: 4px;
 			font-size: 24rpx;
 			padding: 0 40rpx;
 			font-family: Source Han Sans CN;
 			font-weight: 400;
-			color: #BEC0E0;
+			color: #FFFFFF;
 			margin-left: 26rpx;
 			position:relative; 
             &::before{
@@ -509,13 +502,13 @@ export default {
                 height:0;
                 font-size:0;
                 border:solid 8px;
-                border-color: #30324F #22233B #30324F #30324F  ;
+                border-color: #F1F1F1 #068EFD #F1F1F1 #F1F1F1  ;
             }  
 		}
     }
 }
 .callbacl{
-    color: #BEC0E0;
+    color: #b5b5b5;
     height: 100rpx;
     line-height: 100rpx;
     padding: 0 20rpx;
